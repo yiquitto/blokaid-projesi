@@ -1,0 +1,29 @@
+{
+  "name": "blokaid-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for the Blokaid Project",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter backend dev\" \"pnpm --filter frontend dev\"",
+    "build": "pnpm -r build",
+    "start": "pnpm --filter backend start",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .",
+    "test": "pnpm -r test"
+  },
+  "keywords": [
+    "solana",
+    "react",
+    "monorepo",
+    "blockchain"
+  ],
+  "author": "Blokaid Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5",
+    "newman": "^6.1.2"
+  },
+  "packageManager": "pnpm@8.15.5"
+}

@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  walletAddress String? @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DonationPool {
+  id        String   @id @default(cuid())
+  poolAddress String   @unique // On-chain PDA address
+  name      String
+  description String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Package {
+  id           String @id @default(cuid())
+  packageId    BigInt @unique // Matches on-chain u64
+  pdaAddress   String @unique
+  contentHash  String
+  status       String @default("Registered") // Off-chain mirror of on-chain status
+  nftMintAddress String? @unique
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Donation {
+  id          String @id @default(cuid())
+  txSignature String @unique
+  donorWallet String
+  amount      Decimal // Store as Decimal for precision
+  
+  createdAt   DateTime @default(now())
+}

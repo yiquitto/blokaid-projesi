@@ -1,0 +1,33 @@
+# BLOKAID Projesi Özet Raporu
+
+**Tarih:** [Güncel Tarih]
+**Takım:** [Takım Adınız]
+
+## 1. Proje Tanımı
+
+Blokaid, yardım ve bağış süreçlerindeki şeffaflık ve güven eksikliğini gidermek amacıyla geliştirilmiş, Solana blok zinciri tabanlı bir platformdur. Platform, yapılan bağışların oluşturduğu yardım paketlerinin, bağışçıdan ihtiyaç sahibine kadar olan tüm yolculuğunu değiştirilemez ve herkes tarafından doğrulanabilir bir şekilde kaydeder.
+
+## 2. Tespit Edilen Sorun
+
+Geleneksel yardım kuruluşlarında, bağışçılar paralarının nereye gittiğini ve amacına ulaşıp ulaşmadığını takip etmekte zorlanmaktadır. Bu durum, hem yardımseverlerde bir güvensizlik yaratmakta hem de lojistik süreçlerdeki verimsizlikler nedeniyle yardımların kaybolmasına veya gecikmesine neden olmaktadır.
+
+## 3. Önerilen Çözüm
+
+Blokaid, her bir yardım paketine blok zinciri üzerinde eşsiz bir dijital kimlik (NFT) atar. Lojistik sürecindeki her bir adım (depodan çıkış, yola çıkma, teslimat vb.), QR kod taraması ile bu dijital kimliğe işlenir. Bağışçılar, web arayüzü üzerinden kendi bağışlarının oluşturduğu paketin anlık konumunu ve durumunu şeffaf bir şekilde takip edebilir.
+
+## 4. Teknik Altyapı
+
+- **On-Chain (Blok Zinciri):** Solana ağı üzerinde Rust dili ve Anchor framework ile geliştirilmiş akıllı kontratlar. Düşük işlem ücretleri ve yüksek hız için Solana tercih edilmiştir.
+- **Off-Chain (Backend):** Node.js, Express ve Prisma ORM ile geliştirilmiş, PostgreSQL veritabanı kullanan merkezi sunucu. Kullanıcı yönetimi ve kişisel veriler burada güvenli bir şekilde tutulur.
+- **Frontend:** Vite, React ve Redux Toolkit ile oluşturulmuş modern ve kullanıcı dostu bir web arayüzü.
+- **Altyapı:** Tüm sistem, Docker ve Nginx ile konteynerize edilerek taşınabilir ve ölçeklenebilir bir yapıya kavuşturulmuştur.
+
+## 5. İnovatif Yönler
+
+- **Fiziksel-Dijital Köprü:** QR kod teknolojisi ile fiziksel bir paketin durumunu, blok zincirindeki dijital kimliğine (NFT) anlık olarak işler.
+- **Uçtan Uca Şeffaflık:** Bağışın yapıldığı andan, paketin teslim edildiği ana kadar tüm süreç Solana Explorer gibi halka açık araçlarla dahi doğrulanabilir.
+- **Kullanıcı Odaklılık:** Karmaşık blok zinciri teknolojisini, son kullanıcının kolayca anlayabileceği ve kullanabileceği basit bir arayüze soyutlar.
+
+## 6. Sonuç
+
+Blokaid, teknolojiyi sosyal fayda için kullanarak yardım ekosistemine güven ve verimlilik getirmeyi hedeflemektedir. Projemiz, hem bireysel bağışçıların hem de kurumsal yardım kuruluşlarının operasyonlarını daha şeffaf hale getirmeleri için güçlü bir araç sunmaktadır.
