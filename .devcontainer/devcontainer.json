@@ -1,0 +1,33 @@
+{
+	"name": "Blokaid Monorepo",
+	// Use a base image with Node.js v20 pre-installed.
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+
+	"features": {
+		// Add Rust support
+		"ghcr.io/devcontainers/features/rust:1": {},
+		// Add Solana CLI support
+		"ghcr.io/devcontainers-contrib/features/solana:1": {
+			"version": "latest"
+		}
+	},
+
+	// Commands to run after the container is created.
+	// 1. Install pnpm
+	// 2. Install project dependencies with pnpm
+	// 3. Install Anchor Version Manager (avm) and the latest version of Anchor
+	"postCreateCommand": "sudo npm install -g pnpm@8 && pnpm i && cargo install --git https://github.com/coral-xyz/anchor avm --locked --force && avm install latest && avm use latest",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"rust-lang.rust-analyzer",
+				"serayuzgur.crates"
+			]
+		}
+	}
+}
