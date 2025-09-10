@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 
 // Bu adres, `anchor deploy` komutu çalıştırıldığında otomatik olarak güncellenir.
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("TrackNFTs1111111111111111111111111111111111");
 
 #[program]
 pub mod nft_tracker {
