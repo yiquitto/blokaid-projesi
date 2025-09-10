@@ -22,4 +22,7 @@
 ### **Sahne 3: Paketin Yolculuğu (45-75 saniye)**
 
 *   **Görsel:** Gerçek bir koli görüntüsü. Üzerine bir QR kod etiketi yapıştırılır. Ardından bir telefon ekranı belirir, Blokaid'in "Scan" sayfasını gösterir. Telefon kamerası QR kodu okutur.
-*   **Ses (D_İÇERİK_KESİLDİ_]
+*   **Ses (Dış Ses):** "Lojistik sorumlumuz Bob, paketi teslim alıyor ve üzerindeki QR kodu okutarak 'Yola Çıktı' olarak işaretliyor. Her adım, her lokasyon, blok zincirine anında işlenir."
+*   **Aksiyon:** Ekranda "Status: In Transit" yazısı belirir. Solana Explorer'da ilgili işlemin linki kısaca gösterilir.
+
+---

@@ -1,0 +1,19 @@
+# Set default behavior, in case users don't have core.autocrlf set.
+# This will handle line endings automatically for files Git detects as text
+# and leave files it detects as binary untouched.
+# On checkout, text files will have line endings converted to the OS-native format.
+* text=auto
+
+#
+# The above will be sufficient for most cases, but the following rules
+# can be used to explicitly state the desired line endings for specific files.
+#
+
+# These files are text and should be normalized.
+.gitignore      text
+.gitattributes  text
+*.md            text
+*.json          text
+
+# Force LF for shell scripts to avoid issues in non-Windows environments (like CI/CD).
+*.sh            eol=lf

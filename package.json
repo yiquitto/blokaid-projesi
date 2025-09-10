@@ -4,12 +4,18 @@
   "private": true,
   "description": "Monorepo for the Blokaid Project",
   "scripts": {
+    "setup": "bash scripts/setup-dev.sh",
     "dev": "concurrently \"pnpm --filter backend dev\" \"pnpm --filter frontend dev\"",
+    "stack": "bash scripts/dev.sh",
     "build": "pnpm -r build",
     "start": "pnpm --filter backend start",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "test:ci": "bash scripts/ci-smoke.sh",
+    "solana:fund": "bash scripts/fund-dev-wallet.sh",
+    "solana:deploy": "bash scripts/devnet-deploy.sh",
+    "demo:e2e": "bash scripts/e2e-demo.sh"
   },
   "keywords": [
     "solana",

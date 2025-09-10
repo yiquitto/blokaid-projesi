@@ -29,7 +29,7 @@ BLOKAID, [Projenin kısa ve net bir tanımını buraya ekleyin]. Bu monorepo, pr
 
 2.  **Geliştirme Ortamını Hazırlayın:**
     Gerekli `.env` dosyalarını oluşturmak için aşağıdaki script'i çalıştırın.
-    `bash ./scripts/setup-dev.sh`
+    `pnpm run setup`
 
 3.  **Projeyi Çalıştırın:**
     `pnpm dev`

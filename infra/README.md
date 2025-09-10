@@ -14,8 +14,15 @@ Sistem, ana giriş noktası olarak bir Nginx reverse proxy kullanır.
 
 ## Kullanım
 
-Proje yığınını yönetmek için kök dizindeki `scripts/dev.sh` script'ini kullanın:
+Proje yığınını yönetmek için kök dizindeki `pnpm run stack` komutunu kullanın:
 
-- **Tüm servisleri başlatmak için:** `bash ./scripts/dev.sh up`
-- **Tüm servisleri durdurmak için:** `bash ./scripts/dev.sh down`
-- **Tüm servislerin loglarını izlemek için:** `bash ./scripts/dev.sh logs`
+  ```bash
+  pnpm run stack -- up
+  ```
+  ```bash
+  pnpm run stack -- down
+  ```
+  ```bash
+  pnpm run stack -- logs
+  # Belirli bir servisin loglarını izlemek için: pnpm run stack -- logs backend
+  ```

@@ -13,17 +13,17 @@ Bu klasörün içindeyken aşağıdaki Anchor komutlarını kullanabilirsiniz:
 - `anchor build`: Tüm programları derler.
 - `anchor test`: `tests/` klasöründeki testleri çalıştırır.
 - `anchor deploy`: Derlenmiş programları Solana ağına (devnet, mainnet vb.) deploy eder.
-
-## Deployment to Devnet
-
-Bu programları Devnet'e dağıtmak için otomatize edilmiş script'ler bulunmaktadır.
+ 
+## Devnet'e Dağıtım (Deployment)
+ 
+Bu programları Devnet'e dağıtmak için projenin kök dizininde bulunan otomatize edilmiş script'ler kullanılmalıdır.
 
 ### 1. Cüzdanı Fonlama
 
-Dağıtım işlemi gas ücreti gerektirir. Eğer Devnet cüzdanınızda yeterli SOL yoksa, aşağıdaki script'i çalıştırarak 2 SOL talep edebilirsiniz:
+Dağıtım işlemi gas ücreti gerektirir. Eğer Devnet cüzdanınızda yeterli SOL yoksa, aşağıdaki script'i **proje kök dizininden** çalıştırarak 2 SOL talep edebilirsiniz:
 
 ```bash
-bash ./scripts/fund-dev-wallet.sh
+pnpm run solana:fund
 ```
 
 ### 2. Dağıtım Script'ini Çalıştırma

@@ -16,7 +16,7 @@
 
 ### Adım 1: Giriş ve Platform Tanıtımı (30 saniye)
 
-- **Ekran:** `http://localhost:3000` (Dashboard)
+- **Ekran:** `http://localhost:8080` (Dashboard)
 - **Aksiyon:**
   - "Merhaba, ben [İsim] ve bu Blokaid. Blokaid, yapılan yardımların gerçekten ihtiyaç sahiplerine ulaşıp ulaşmadığı sorununu blok zinciri teknolojisiyle çözen şeffaf bir yardım platformudur."
   - "Bugün size bir bağışın nasıl bir hayatı değiştirdiğini, bir yardım paketinin yolculuğunu baştan sona, %100 şeffaf bir şekilde göstereceğiz."
