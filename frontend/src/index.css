@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cüzdan butonu için özel stiller ekleyerek temayla uyumlu hale getiriyoruz */
+.wallet-adapter-button-trigger {
+    background-color: #0d9488 !important; /* teal-600 */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.wallet-adapter-button-trigger:hover {
+    background-color: #0f766e !important; /* teal-700 */
+}
+
+body {
+    @apply bg-gray-900 text-gray-100;
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
-import App from './App.tsx';
-import './App.css';
-import WalletContextProvider from './contexts/WalletContextProvider';
+import App from './App';
+import WalletContextProvider from './providers/WalletContextProvider';
+import store from './store/store';
+import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -13,5 +13,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <App />
       </Provider>
     </WalletContextProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

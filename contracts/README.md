@@ -36,7 +36,7 @@ Aşağıdaki komut, projenin kök dizininden çalıştırılmalıdır. Bu script
 5.  ID'leri `backend/.env.example` ve `frontend/.env.example` dosyalarına ekler.
 
 ```bash
-bash ./scripts/devnet-deploy.sh
+pnpm run solana:deploy
 ```
 
 ### Rollback Stratejisi
