@@ -1,84 +1,72 @@
 use anchor_lang::prelude::*;
 
-pub mod errors;
-pub mod events;
-pub mod instructions;
-pub mod state;
-
-use instructions::*;
+// Bu adres, `anchor deploy` komutu çalıştırıldığında otomatik olarak güncellenir.
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 
 #[program]
 pub mod donation_pool {
     use super::*;
 
-    /// Initializes a new donation pool with a set of owners and a multisig threshold.
-    ///
-    /// # Arguments
-    ///
-    /// * `ctx` - The context for this instruction.
-    /// * `owners` - A vector of public keys for the multisig owners.
-    /// * `threshold` - The number of signatures required to approve a proposal.
-    pub fn initialize(
-        ctx: Context<InitializePool>,
-        owners: Vec<Pubkey>,
-        threshold: u8,
-    ) -> Result<()> {
-        instructions::initialize::handler(ctx, owners, threshold)
+    /// Yeni bir bağış havuzu hesabı oluşturur.
+    /// Bu fonksiyon, genellikle projenin başında bir kere çağrılır.
+    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+        let donation_pool = &mut ctx.accounts
+.donation_pool;
+        donation_pool.total_donated = 0;
+        donation_pool.authority = *ctx.accounts.user.key;
+        msg!("Donation pool initialized!");
+        Ok(())
     }
 
-    /// Allows a user to donate SOL to the pool.
-    ///
-    /// # Arguments
-    ///
-    /// * `ctx` - The context for this instruction.
-    /// * `amount` - The amount of SOL to donate in lamports.
+    /// Bir bağışçının havuza SOL katkısında bulunmasını sağlar.
     pub fn donate(ctx: Context<Donate>, amount: u64) -> Result<()> {
-        instructions::donate::handler(ctx, amount)
-    }
+        let donor = &ctx.accounts.donor;
+        let donation_pool = &mut ctx.accounts.donation_pool;
 
-    /// Locks the fund, preventing further donations and allowing withdrawal proposals.
-    /// Can only be called by a pool owner.
-    ///
-    /// # Arguments
-    ///
-    /// * `ctx` - The context for this instruction.
-    pub fn lock_funds(ctx: Context<LockFunds>) -> Result<()> {
-        instructions::lock_funds::handler(ctx)
-    }
+        // Sistem programını kullanarak transfer talimatını oluştur
+        let ix = anchor_lang::solana_program::system_instruction::transfer(
+            &donor.key(),
+            &donation_pool.key(),
+            amount,
+        );
 
-    /// Creates a withdrawal proposal.
-    /// Can only be called by a pool owner after the fund is locked.
-    ///
-    /// # Arguments
-    ///
-    /// * `ctx` - The context for this instruction.
-    /// * `amount` - The amount of SOL to withdraw.
-    /// * `recipient` - The public key of the recipient.
-    pub fn propose_withdrawal(
-        ctx: Context<ProposeWithdrawal>,
-        amount: u64,
-        recipient: Pubkey,
-    ) -> Result<()> {
-        instructions::propose_withdrawal::handler(ctx, amount, recipient)
-    }
+        // Transferi gerçekleştir
+        anchor_lang::solana_program::program::invoke(
+            &ix,
+            &[
+                donor.to_account_info(),
+                donation_pool.to_account_info(),
+            ],
+        )?;
 
-    /// Approves a withdrawal proposal.
-    /// Can only be called by a pool owner who has not already approved it.
-    ///
-    /// # Arguments
-    ///
-    /// * `ctx` - The context for this instruction.
-    pub fn approve_proposal(ctx: Context<ApproveProposal>) -> Result<()> {
-        instructions::approve_proposal::handler(ctx)
+        // Toplam bağış miktarını güncelle
+        donation_pool.total_donated = donation_pool.total_donated.checked_add(amount).unwrap();
+        
+        msg!("Donation of {} lamports received. Thank you!", amount);
+        Ok(())
     }
+}
 
-    /// Executes a withdrawal proposal if it has enough approvals and the timelock has passed.
-    ///
-    /// # Arguments
-    ///
-    /// * `ctx` - The context for this instruction.
-    pub fn execute_proposal(ctx: Context<ExecuteProposal>) -> Result<()> {
-        instructions::execute_proposal::handler(ctx)
-    }
+#[derive(Accounts)]
+pub struct Initialize<'info> {
+    #[account(init, payer = user, space = 8 + 8 + 32)] // Discriminator + u64 + Pubkey
+    pub donation_pool: Account<'info, DonationPool>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct Donate<'info> {
+    #[account(mut)]
+    pub donation_pool: Account<'info, DonationPool>,
+    #[account(mut)]
+    pub donor: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[account]
+pub struct DonationPool {
+    pub total_donated: u64,
+    pub authority: Pubkey,
 }
