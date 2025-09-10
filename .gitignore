@@ -1,42 +1,49 @@
-# Dependencies
-/node_modules
-/.pnpm-store
+# --- Genel ---
+# Bağımlılık klasörleri
+**/node_modules
+.pnpm-store/
 
-# Build output
-/dist
-/build
-/out
+# Build çıktıları
+**/dist
+**/build
+**/out
 
-# Logs
+# Log dosyaları
 logs
 *.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 lerna-debug.log*
 
-# Runtime data
+# Çalışma zamanı verileri
 pids
 *.pid
 *.seed
 *.pid.lock
 
-# Environment variables
+# Ortam değişkenleri (Örnek dosyaları hariç tutma)
 .env
 .env.*
 !.env.example
 
-# IDEs and editors
-.idea/
+# --- IDE ve Editörler ---
+.idea
+.vscode/
 
-# OS generated files
+# --- İşletim Sistemi ---
 .DS_Store
 Thumbs.db
 
-# Anchor/Solana
-/target/
-/test-ledger/
+# --- Anchor / Solana ---
+target/
+test-ledger/
+program-id.json
+**/*.rs.bk
 
-# Temporary files from sed
+# --- Geçici Dosyalar ---
 *.bak
+
+# --- Docker ---
+docker-data/

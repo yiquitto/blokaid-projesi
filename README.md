@@ -40,18 +40,18 @@ cd blokaid-projesi
 
 ### 2. Bağımlılıkları Yükleme
 
-Projenin tüm bağımlılıklarını yüklemek için kök dizinde `pnpm` kullanın.
+Projenin tüm bağımlılıklarını (frontend, backend, contracts) tek bir komutla yükleyin.
 
 ```bash
-pnpm i
+pnpm install
 ```
 
 ### 3. Ortam Değişkenlerini Ayarlama
 
-Projenin `backend` ve `frontend` servisleri için gerekli olan `.env` dosyalarını oluşturmak üzere aşağıdaki script'i çalıştırın.
+Projenin `backend` ve `frontend` servisleri için gerekli olan `.env` dosyalarını oluşturmak için aşağıdaki komutu çalıştırın. Bu komut, `.env.example` dosyalarını kopyalar. Eğer `.env` dosyalarınız zaten varsa, üzerine yazılmaz.
 
 ```bash
-pnpm run setup
+pnpm run setup:env
 ```
 
 Bu komut, `backend/.env.example` ve `frontend/.env.example` dosyalarını kopyalayarak `backend/.env` ve `frontend/.env` dosyalarını oluşturur. Veritabanı şifresi gibi hassas bilgileri bu dosyalarda düzenlemeniz gerekebilir.

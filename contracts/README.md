@@ -28,12 +28,11 @@ pnpm run solana:fund
 
 ### 2. Dağıtım Script'ini Çalıştırma
 
-Aşağıdaki komut, projenin kök dizininden çalıştırılmalıdır. Bu script sırasıyla:
+Aşağıdaki komut, projenin **kök dizininden** çalıştırılmalıdır. Bu script sırasıyla:
 1.  Programları derler (`anchor build`).
 2.  Programları Devnet'e dağıtır (`anchor deploy`).
 3.  Dağıtım sonrası oluşan program ID'lerini yakalar.
-4.  ID'leri `contracts/program-ids.json` dosyasına yazar.
-5.  ID'leri `backend/.env.example` ve `frontend/.env.example` dosyalarına ekler.
+4.  ID'leri `backend` ve `frontend` klasörlerindeki `.env` ve `.env.example` dosyalarına ekler.
 
 ```bash
 pnpm run solana:deploy
@@ -41,7 +40,7 @@ pnpm run solana:deploy
 
 ### Rollback Stratejisi
 
-Bir programın önceki bir versiyonuna geri dönmek (rollback) için, ilgili programın kodunu içeren önceki bir Git commit'ine geçiş yapın (`git checkout <commit_hash> -- contracts/programs/program_adi`) ve `devnet-deploy.sh` script'ini yeniden çalıştırın. Bu, eski kodun üzerine yeni bir dağıtım yapacaktır.
+Bir programın önceki bir versiyonuna geri dönmek (rollback) için, ilgili programın kodunu içeren önceki bir Git commit'ine geçiş yapın (`git checkout <commit_hash> -- contracts/programs/program_adi`) ve `pnpm run solana:deploy` komutunu yeniden çalıştırın. Bu, eski kodun üzerine yeni bir dağıtım yapacaktır.
 
 ### Gas ve Dağıtım Maliyetleri
 

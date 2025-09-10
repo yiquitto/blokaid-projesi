@@ -1,35 +1,22 @@
 {
-  "name": "blokaid-monorepo",
+  "name": "blokaid-projesi-root",
   "version": "1.0.0",
   "private": true,
-  "description": "Monorepo for the Blokaid Project",
+  "description": "Blokaid Projesi monorepo kök dizini",
   "scripts": {
-    "setup": "bash scripts/setup-dev.sh",
-    "dev": "concurrently \"pnpm --filter backend dev\" \"pnpm --filter frontend dev\"",
-    "stack": "bash scripts/dev.sh",
-    "build": "pnpm -r build",
-    "start": "pnpm --filter backend start",
+    "install": "pnpm i",
+    "setup:env": "node ./scripts/setup-env.js",
+    "dev": "concurrently \"pnpm --filter frontend dev\" \"pnpm --filter backend dev\"",
+    "build": "pnpm --filter \"./{frontend,backend}\" build",
+    "test": "pnpm --filter \"./{frontend,backend}\" test",
     "lint": "prettier --check .",
-    "lint:fix": "prettier --write .",
-    "test": "pnpm -r test",
-    "test:ci": "bash scripts/ci-smoke.sh",
-    "solana:fund": "bash scripts/fund-dev-wallet.sh",
-    "solana:deploy": "bash scripts/devnet-deploy.sh",
-    "demo:e2e": "bash scripts/e2e-demo.sh"
+    "frontend": "pnpm --filter frontend",
+    "backend": "pnpm --filter backend",
+    "stack": "docker-compose",
+    "solana:deploy": "node ./scripts/deploy.js",
+    "solana:fund": "solana airdrop 2"
   },
-  "keywords": [
-    "solana",
-    "react",
-    "monorepo",
-    "blockchain"
-  ],
-  "author": "Blokaid Team",
-  "license": "MIT",
-  "devDependencies": {
-    "concurrently": "^8.2.2",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5",
-    "newman": "^6.1.2"
-  },
-  "packageManager": "pnpm@8.15.5"
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
