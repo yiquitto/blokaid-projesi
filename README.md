@@ -16,6 +16,37 @@ Blokaid, yapılan yardımların yolculuğunu Solana blok zinciri üzerinde takip
 - **Blockchain:** Solana, Anchor Framework, Rust
 - **Containerization & Otomasyon:** Docker, Docker Compose, Nginx, Node.js Scripts
 
+## 🚀 Sunum Günü: Tek Komutla Başlatma
+
+Jüri karşısında veya bir demo sırasında teknik aksaklık yaşamamak için projenin tüm altyapısı **tek bir komutla** çalışacak şekilde tasarlanmıştır.
+
+**Sunumdan Önce Yapılması Gerekenler (Tek Seferlik Hazırlık):**
+
+Sunum yapacağınız makinede, aşağıdaki hazırlık adımlarını **sadece bir kez** tamamlamanız yeterlidir. Bu adımlar, tüm bağımlılıkları kurar, akıllı kontratları ağa dağıtır ve Docker imajlarını oluşturur.
+
+1.  `pnpm install`
+2.  `pnpm run setup:env`
+3.  `pnpm run solana:deploy`
+4.  `pnpm run stack -- build` (İmajları önceden oluşturarak sunum anında zaman kazanmak için)
+
+**Sunum Günü Çalıştırmanız Gereken Tek Komut:**
+
+Tüm hazırlıklar tamamlandıktan sonra, sunum günü geldiğinde altyapıyı (Veritabanı, Backend, Frontend) ayağa kaldırmak için çalıştırmanız gereken **tek komut** şudur:
+
+```bash
+pnpm run stack -- up
+```
+
+Bu komut, tüm servisleri Docker üzerinde başlatır ve projeyi `http://localhost:8080` adresinde erişilebilir hale getirir. `anchor upgrade` gibi karmaşık komutlarla uğraşmanıza gerek kalmaz.
+
+**Sistemi Kapatmak İçin:**
+
+Demo bittiğinde, tüm servisleri temiz bir şekilde kapatmak için aşağıdaki komutu kullanabilirsiniz:
+
+```bash
+pnpm run stack -- down
+```
+
 ## 🚀 Hızlı Başlangıç (Docker ile)
 
 Bu kılavuz, projeyi Docker kullanarak **tek bir komutla** ayağa kaldırmanız için tasarlanmıştır. Bu yöntem, tüm servisleri (veritabanı, backend, frontend vb.) sizin için otomatik olarak kurar ve yapılandırır.

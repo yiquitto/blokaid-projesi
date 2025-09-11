@@ -48,6 +48,10 @@ Projenin `pnpm run solana:deploy` script'i, tüm programları aynı anda dağıt
 
 Bu script, `anchor upgrade` komutunu sizin için doğru argümanlarla çalıştırarak manuel hata yapma riskini ortadan kaldırır.
 
+**Neden Bu Script'i Kullanmalısınız?**
+
+Manuel olarak `anchor upgrade --program-id <ID> <DOSYA_YOLU>` komutunu çalıştırmak, doğru program ID'sini ve `.so` dosya yolunu bulmayı gerektirir. Bu script, bu süreci sizin için otomatikleştirerek `program-id` veya `program_filepath` gibi argümanların eksik olmasından kaynaklanan hataları tamamen önler.
+
 **Kullanım:**
 
 Aşağıdaki komutu projenin **kök dizininden** çalıştırın ve `<program_adı>` kısmını güncellemek istediğiniz programın adıyla (örneğin `donation_pool` veya `nft_tracker`) değiştirin.
