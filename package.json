@@ -8,13 +8,14 @@
     "setup:env": "node ./scripts/setup-env.js",
     "dev": "concurrently \"pnpm --filter frontend dev\" \"pnpm --filter backend dev\"",
     "build": "pnpm --filter \"./{frontend,backend}\" build",
-    "test": "pnpm --filter \"./{frontend,backend}\" test",
+    "test": "pnpm --filter \"./**\" test",
     "lint": "prettier --check .",
     "frontend": "pnpm --filter frontend",
     "backend": "pnpm --filter backend",
     "stack": "docker-compose",
     "solana:deploy": "node ./scripts/deploy.js",
-    "solana:fund": "solana airdrop 2"
+    "solana:fund": "solana airdrop 2",
+    "solana:upgrade": "node ./scripts/upgrade.js"
   },
   "keywords": [],
   "author": "",

@@ -42,6 +42,28 @@ pnpm run solana:deploy
 
 Bir programın önceki bir versiyonuna geri dönmek (rollback) için, ilgili programın kodunu içeren önceki bir Git commit'ine geçiş yapın (`git checkout <commit_hash> -- contracts/programs/program_adi`) ve `pnpm run solana:deploy` komutunu yeniden çalıştırın. Bu, eski kodun üzerine yeni bir dağıtım yapacaktır.
 
+### Akıllı Kontratları Tek Tek Güncelleme (Upgrade)
+
+Projenin `pnpm run solana:deploy` script'i, tüm programları aynı anda dağıtmak için önerilen yöntemdir. Ancak, geliştirme sırasında sadece **tek bir programı** hızlıca güncellemek isterseniz, bunun için özel olarak hazırlanmış `solana:upgrade` script'ini kullanabilirsiniz.
+
+Bu script, `anchor upgrade` komutunu sizin için doğru argümanlarla çalıştırarak manuel hata yapma riskini ortadan kaldırır.
+
+**Kullanım:**
+
+Aşağıdaki komutu projenin **kök dizininden** çalıştırın ve `<program_adı>` kısmını güncellemek istediğiniz programın adıyla (örneğin `donation_pool` veya `nft_tracker`) değiştirin.
+
+```bash
+# Genel kullanım
+pnpm solana:upgrade <program_adı>
+# Örnek
+pnpm solana:upgrade donation_pool
+```
+
+**Önemli Notlar:**
+- `declare_id!` makrosu (`lib.rs` içinde) ile güncellediğiniz programın ID'si tutarlı olmalıdır.
+- Program hesaplarında SOL bulunmamalıdır.
+- Güncelleme yetkisine (`upgrade authority`) sahip olan cüzdan ile bu işlemi yapmanız gerekir.
+
 ### Gas ve Dağıtım Maliyetleri
 
 `anchor deploy` komutunun çıktısı, her bir program için dağıtımın maliyetini (gerekli olan rent ücreti) SOL cinsinden gösterir. Bu maliyet, programın boyutuna göre değişir.
