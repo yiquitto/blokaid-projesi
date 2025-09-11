@@ -76,6 +76,7 @@ pnpm run solana:deploy
 
 Projeyi çalıştırmak için iki ana yöntem bulunmaktadır:
 
+
 **Yöntem A: Docker ile (Önerilen)**
 
 Bu yöntem, veritabanı dahil tüm servisleri tek bir komutla ayağa kaldırır.
