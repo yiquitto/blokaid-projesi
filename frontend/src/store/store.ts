@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './slices/authSlice';
-import donationsReducer from './slices/donationsSlice';
-import packagesReducer from './slices/packagesSlice';
+import authReducer from './authSlice'; // Yol düzeltildi
+// import donationsReducer from './slices/donationsSlice';
+// import packagesReducer from './slices/packagesSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    donations: donationsReducer,
-    packages: packagesReducer,
+    // donations: donationsReducer,
+    // packages: packagesReducer,
     // Diğer slice'lar buraya eklenecek
   },
 });
